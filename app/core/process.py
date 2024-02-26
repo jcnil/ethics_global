@@ -8,7 +8,7 @@ from app.core.querysets import Queryset
 from app.core.constants import OK
 
 
-class Performance:        
+class Performance:
     @staticmethod
     def measure_time_execution(func, *args):
         start = time.time()
@@ -16,7 +16,7 @@ class Performance:
         end = time.time()
         total_time = end - start
         return result, total_time
-    
+
     @staticmethod
     def measure_use_resource():
         cpu_percent = psutil.cpu_percent()
@@ -66,7 +66,8 @@ class CryptedProcess(Performance):
         return {
             'status': OK,
             'data': request,
-            "message": "Text Encrypted",
+            'message': 'Text Encrypted',
+            'exception': NotFoundException
         }
 
     def decrypt_data(self, encrypted_text, private_key):
@@ -76,7 +77,7 @@ class CryptedProcess(Performance):
         result, total_time = self.measure_time_execution(self.desencrypted_text, encrypted_text, private_key)
 
         cpu_percent, memory_percent = self.measure_use_resource()
-        
+
         request = {
             'text': decrypted_text,
             'encrypted_text': str(encrypted_text),
@@ -84,11 +85,12 @@ class CryptedProcess(Performance):
             'cpu_percent': str(cpu_percent),
             'memory_percent': str(memory_percent)
         }
-        
+
         Queryset.create_row(request)
 
         return {
             'status': OK,
             'data': request,
             "message": "Text Decrypted",
+            'exception': NotFoundException
         }

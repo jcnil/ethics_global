@@ -8,7 +8,7 @@ class Queryset:
     @staticmethod
     def create_row(request) -> TextModel:
         """
-        Create an document with the text 
+        Create an document with the text
         :param request
         :return: TextModel
         """
@@ -23,4 +23,4 @@ class Queryset:
             obj = TextModel(**request)
             obj.historical.append(dict(request))
 
-        return obj.save()   
+        return obj.save()

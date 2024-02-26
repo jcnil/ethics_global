@@ -1,5 +1,3 @@
-from typing import Union, Annotated
-
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
@@ -39,20 +37,22 @@ async def post_encrypted_text(text: TextInput) -> dict:
         return JSONResponse(
             content={
                 "status": e.status,
-                "data": request,
+                "data": result["data"],
                 "message": str(e.message("Text")),
                 "errors": str(e)
             },
             status_code=e.status
         )
 
+
 @router.post(
     "/text/decrypted/{private_key}",
     tags=["DecryptedText"],
     response_model=ResponseSerializer
 )
-async def post_decrypted_text(text_encrypt: TextInput,
-                              private_key: str
+async def post_decrypted_text(
+    text_encrypt: TextInput,
+    private_key: str
 ) -> dict:
     """Post text to decrypted """
     try:
@@ -73,7 +73,7 @@ async def post_decrypted_text(text_encrypt: TextInput,
         return JSONResponse(
             content={
                 "status": e.status,
-                "data": request,
+                "data": result["data"],
                 "message": str(e.message("Text")),
                 "errors": str(e)
             },
