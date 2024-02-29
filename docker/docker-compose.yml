@@ -12,8 +12,8 @@ services:
       - ./mongo_config:/data/configdb
     ports:
       - "27017-27019:27017-27019"
-  #api stori
-  app: &api-stori
+  #challenge_ethics_global
+  app: &challenge_ethics_global
     build:
       context: ../../
       dockerfile: docker/Dockerfile

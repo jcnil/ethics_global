@@ -31,7 +31,7 @@ class BaseDocument:
 class TextModel(BaseDocument, Document):
     meta = {
         "collection": "text",
-        "indexes": ["text"]
+        "indexes": ["text", "encrypted_text"]
     }
 
     text = StringField(default="")

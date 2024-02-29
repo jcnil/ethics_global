@@ -10,6 +10,6 @@ class EncryptedHandler:
 
 class DecryptedHandler:
     @staticmethod
-    def decrypted_text(request, private_key):
+    def decrypted_text(request):
         obj = CryptedProcess()
-        return obj.decrypt_data(request, private_key)
+        return obj.decrypt_data(request)

@@ -46,20 +46,18 @@ async def post_encrypted_text(text: TextInput) -> dict:
 
 
 @router.post(
-    "/text/decrypted/{private_key}",
+    "/text/decrypted",
     tags=["DecryptedText"],
     response_model=ResponseSerializer
 )
 async def post_decrypted_text(
-    text_encrypt: TextInput,
-    private_key: str
+    text_encrypt: TextInput
 ) -> dict:
     """Post text to decrypted """
     try:
 
         result = DecryptedHandler.decrypted_text(
-            text_encrypt.text,
-            private_key
+            text_encrypt.text
         )
 
         return JSONResponse(
