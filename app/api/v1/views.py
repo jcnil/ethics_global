@@ -1,17 +1,9 @@
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
-from app.core.exceptions import (
-    ExistException
-)
-from app.core.handlers import (
-    EncryptedHandler,
-    DecryptedHandler
-)
-from app.api.v1.serializers import (
-    TextInput,
-    ResponseSerializer
-)
+from app.core.exceptions import ExistException
+from app.core.handlers import EncryptedHandler, DecryptedHandler
+from app.api.v1.serializers import TextInput, ResponseSerializer
 
 router = APIRouter()
 
