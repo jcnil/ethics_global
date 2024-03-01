@@ -61,7 +61,11 @@ is running in your pc with the next command, or maybe you should validate if you
 ```sh
 sudo systemctl status mongod
 ```
-
+```sh
+sudo rm -rf /tmp/mongodb-27017.sock
+sudo service mongod start
+sudo systemctl status mongod
+```
 ### Installation 
 
 1. Install the virtual environment
